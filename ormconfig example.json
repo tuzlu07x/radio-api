@@ -1,0 +1,11 @@
+{
+  "type": "mysql2",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "",
+  "database": "",
+  "entities": ["src/Entity/**/*.ts"],
+  "migrations": ["src/Migrations/**/*.ts"],
+  "synchronize": true
+}
