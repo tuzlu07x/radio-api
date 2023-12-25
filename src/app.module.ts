@@ -18,7 +18,7 @@ import { SongEntity } from './Entity/SongEntity';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '',
+      password: 'Fatih1234',
       database: 'radio',
       entities: [SongEntity],
       synchronize: true,

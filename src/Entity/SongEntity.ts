@@ -1,4 +1,8 @@
+// song.entity.ts
+import { SongValidation } from 'src/Validation/SongValidation';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { validateSync } from 'class-validator';
+import { BadRequestException } from '@nestjs/common';
 
 @Entity()
 export class SongEntity {
@@ -25,4 +29,11 @@ export class SongEntity {
 
     @Column({ type: 'timestamp' })
     updated_at: Date;
+
+    async validate(songValidation: SongValidation): Promise<void> {
+        const errors = validateSync(songValidation);
+        if (errors.length > 0) {
+            throw new BadRequestException({ message: 'Validation failed', errors });
+        }
+    }
 }

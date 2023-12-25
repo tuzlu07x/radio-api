@@ -1,5 +1,4 @@
 import { Controller, Get } from '@nestjs/common';
-import { AxiosResponse } from 'axios';
 import { ClientService } from 'src/Services/ClientService';
 
 @Controller()
