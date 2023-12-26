@@ -9,10 +9,14 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { SongEntity } from './Entity/SongEntity';
 import { ClientService } from './Services/ClientService';
 import { SongService } from './Services/SongService';
+import { SpotifyModule } from './Modules/SpotifyModule';
+import { SpotifyController } from './Controllers/SpotifyController';
+import { SpotifyService } from './Services/SpotifyService';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  controllers: [AppController, SongController],
-  providers: [ClientService, AppService, SongService],
+  controllers: [AppController, SongController, SpotifyController],
+  providers: [ClientService, AppService, SongService, SpotifyService],
   imports: [
     ScheduleModule.forRoot(),
     HttpModule,
@@ -25,9 +29,11 @@ import { SongService } from './Services/SongService';
       database: 'radio',
       entities: [SongEntity],
       synchronize: true,
-      logging: true,
+      //logging: true,
     }),
+    ConfigModule.forRoot(),
     SongModule,
+    SpotifyModule,
   ],
 })
 

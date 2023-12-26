@@ -24,14 +24,14 @@ export class SongSchedule {
         const songName = response.data.CurrentSong.SongName;
 
         const isSongExists = await this.songRepository.findOne({ where: { song_name: artistName } });
-        if (songName === 'REKLAM') this.logger.debug('Radio is on break')
+        if (songName === "REKLAM") this.logger.debug('Radio is on break')
         if (!isSongExists) {
             const songEntity = new SongEntity();
             songEntity.artist_name = songName;
             songEntity.song_name = artistName;
             songEntity.song_image = response.data.ServiceItuneResponse.songImage;
             songEntity.song_ituneUrl = response.data.ServiceItuneResponse.song_ituneUrl;
-            songEntity.genre = response.data.ServiceItuneResponse.genre;
+            songEntity.genre = response.data.ServiceItuneResponse.genre ?? 'it is null';
             songEntity.created_at = new Date(moment().valueOf());
             songEntity.updated_at = new Date(moment().valueOf());
 
