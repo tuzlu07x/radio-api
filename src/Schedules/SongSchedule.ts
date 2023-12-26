@@ -24,7 +24,7 @@ export class SongSchedule {
         const songName = response.data.CurrentSong.SongName;
 
         const isSongExists = await this.songRepository.findOne({ where: { song_name: songName } });
-
+        if (songName === 'REKLAM') this.logger.debug('Radio is on break')
         if (!isSongExists) {
             const songEntity = new SongEntity();
             songEntity.artist_name = artistName;

@@ -1,5 +1,5 @@
 // song.validation.ts
-import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import { IsEmpty, IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class SongValidation {
     @IsNotEmpty()
@@ -18,7 +18,7 @@ export class SongValidation {
     @IsUrl()
     song_ituneUrl: string;
 
-    @IsNotEmpty()
+    @IsEmpty()
     @IsString()
     genre: string;
 }
