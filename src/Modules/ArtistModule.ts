@@ -5,11 +5,9 @@ import { HttpModule } from '@nestjs/axios';
 import { ClientService } from 'src/Services/ClientService';
 import { SongSchedule } from 'src/Schedules/SongSchedule';
 import { Module } from '@nestjs/common';
-import { ArtistModule } from './ArtistModule';
-import { ArtistService } from 'src/Services/ArtistService';
 @Module({
-    imports: [HttpModule, TypeOrmModule.forFeature([SongEntity])],
-    providers: [ClientService, SongSchedule, ArtistModule, ArtistService],
+    imports: [HttpModule, TypeOrmModule.forFeature([ArtistEntity])],
+    providers: [],
 })
 
-export class SongModule { }
+export class ArtistModule { }

@@ -1,16 +1,17 @@
 // song.entity.ts
 import { SongValidation } from 'src/Validation/SongValidation';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { validateSync } from 'class-validator';
 import { BadRequestException } from '@nestjs/common';
+import { ArtistEntity } from './ArtistEntity';
 
 @Entity()
 export class SongEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    artist_name: string;
+    @ManyToOne(type => ArtistEntity, artist => artist.artist_name)
+    artist: ArtistEntity
 
     @Column()
     song_name: string;

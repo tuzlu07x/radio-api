@@ -1,9 +1,13 @@
-import { IsNotEmpty, IsString, ValidateIf, IsUrl } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsNotEmpty, IsString, ValidateIf, IsUrl, IsDate, IsNumber, ValidateNested } from 'class-validator';
+import { ArtistEntity } from 'src/Entity/ArtistEntity';
 
 export class SongValidation {
+
     @IsNotEmpty()
-    @IsString()
-    artist_name: string;
+    @ValidateNested()
+    @Type(() => ArtistEntity)
+    artist: ArtistEntity;
 
     @IsNotEmpty()
     @IsString()
@@ -16,6 +20,12 @@ export class SongValidation {
     @IsNotEmpty()
     @IsUrl({}, { message: 'Invalid URL format for song_ituneUrl' })
     song_ituneUrl: string;
+
+    @IsDate()
+    created_at: Date
+
+    @IsDate()
+    updated_at: Date
 
     @ValidateIf((obj, value) => value !== undefined)
     @IsString()

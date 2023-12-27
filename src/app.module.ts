@@ -13,6 +13,8 @@ import { SpotifyModule } from './Modules/SpotifyModule';
 import { SpotifyController } from './Controllers/SpotifyController';
 import { SpotifyService } from './Services/SpotifyService';
 import { ConfigModule } from '@nestjs/config';
+import { ArtistEntity } from './Entity/ArtistEntity';
+import { ArtistModule } from './Modules/ArtistModule';
 
 @Module({
   controllers: [AppController, SongController, SpotifyController],
@@ -27,13 +29,14 @@ import { ConfigModule } from '@nestjs/config';
       username: 'root',
       password: 'Fatih1234',
       database: 'radio',
-      entities: [SongEntity],
+      entities: [SongEntity, ArtistEntity],
       synchronize: true,
       //logging: true,
     }),
     ConfigModule.forRoot(),
     SongModule,
     SpotifyModule,
+    ArtistModule
   ],
 })
 
