@@ -36,8 +36,7 @@ import { ArtistModule } from './Modules/ArtistModule';
     ConfigModule.forRoot(),
     SongModule,
     SpotifyModule,
-    ArtistModule
+    ArtistModule,
   ],
 })
-
-export class AppModule { }
+export class AppModule {}
