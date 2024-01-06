@@ -31,7 +31,6 @@ import { ArtistModule } from './Modules/ArtistModule';
       database: 'radio',
       entities: [SongEntity, ArtistEntity],
       synchronize: true,
-      //logging: true,
     }),
     ConfigModule.forRoot(),
     SongModule,
